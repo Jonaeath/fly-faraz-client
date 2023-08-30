@@ -14,8 +14,10 @@ const Services = () => {
    const sliceService = services.slice(0,3);
 
     return (
-        <div>
+        <div className='ml-9 pb-6 '>
             <h1>This is service</h1>
+            <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+            
             {
                 sliceService.map(service=><DisplayService
                     service = {service}
@@ -23,6 +25,8 @@ const Services = () => {
 
                     ></DisplayService>)
             }
+
+            </div>
         </div>
     );
 };
