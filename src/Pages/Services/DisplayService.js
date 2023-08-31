@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const DisplayService = ({service}) => {
 
-    const {title,img,price,description} = service;
+    const {_id,title,img,price,description} = service;
 
     return (
         <div>
@@ -13,7 +14,9 @@ const DisplayService = ({service}) => {
                     <h2>Cost:{price}</h2>
                     <p>{description}</p>
                     <div className="card-actions justify-center">
+                        <Link to = {`/booking/${_id}`}>
                         <button className="btn btn-primary">Booking Now</button>
+                        </Link>
                     </div>
                 </div>
             </div>
