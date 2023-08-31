@@ -1,9 +1,9 @@
 import { faPlane } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+
   return (
     <div className="navbar bg-sky-300">
       <div className="navbar-start">
@@ -44,8 +44,8 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end mr-5">
-        <Link className="btn bg-sky-500 ">Log In / Sign Up</Link>
-
+        <Link to='login' className="btn bg-sky-400 ">Log In</Link>
+        <Link to='signup' className="btn bg-sky-400 ">Sign Up</Link>
       </div>
     </div>
   );
