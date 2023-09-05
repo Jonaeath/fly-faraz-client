@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
             {
                 path:'/booking/:id',
                 element:<Booking/>,
-                loader:({params}) => fetch(`http://localhost:5000/flyData/${params.id}`)
+                loader:({params}) => fetch(`http://localhost:4000/flyData/${params.id}`)
 
             }
         ]
