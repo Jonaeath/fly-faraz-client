@@ -66,7 +66,7 @@ const Booking = () => {
             </div>
             <div className='flex justify-center items-center'>
             
-             <input className='btn btn-warning mb-2' type="submit" value="Place Your Order"/>
+             <input className='btn btn-primary bg-sky-600 text-primary-content mb-2' type="submit" value="Place Your Order"/>
 
             
             </div>
