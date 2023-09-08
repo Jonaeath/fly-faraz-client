@@ -5,35 +5,66 @@ import ServiceRow from './ServiceRow';
 const ConfromService = () => {
     const {user} = useContext(authContext);
     const [conformService, seTconformServices] = useState({});
-
+    
+    // Load booking data from Mongodb for make booking list
     useEffect(() => {
+      if(user?.email){
         fetch(`http://localhost:4000/bookingData?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => seTconformServices(data))
+        .then(res => res.json())
+        .then(data => seTconformServices(data))
+        .catch(error => console.log(error))
+      }
+        
     }, [user?.email])
 
-    // const handleDelete = id =>{
-    //     const proceed = window.confirm('Are you sure?..You want to cancel this Order')
-    //     if(proceed){
-    //       fetch(`http://localhost:5000/orders/${id}`,{
-    //         method:'DELETE'
-    //       })
-    //       .then(res =>res.json())
-    //       .then(data=>{
-    //         console.log(data);
-    //         if(data.deletedCount > 0){
-    //             alert('deleted successfully');
-    //             const remaining = orders.filter(odr => odr._id !== id);
-    //             setOrders(remaining);
-    //         }
-    //       })
-    //     }
-    //   }
+
+    
+
+    const handleDelete = id =>{
+        const proceed = window.confirm('Are you sure?..You want to cancel this Order')
+        if(proceed){
+          fetch(`http://localhost:4000/bookingData/${id}`,{
+            method:'DELETE'
+          })
+          .then(res =>res.json())
+          .then(data=>{
+            console.log(data);
+            if(data.deletedCount > 0){
+                alert('deleted successfully');
+                const remaining = conformService.filter(odr => odr._id !== id);
+                seTconformServices(remaining);
+            }
+          })
+        }
+      }
+
+      const handelApproved = (id) =>{
+        fetch(`http://localhost:4000/bookingData/${id}`,{
+            method:'PATCH',
+            headers:{
+              'content-type':'application/json'
+            },
+            body: JSON.stringify({status:'Approving'})
+        })
+        .then(res => res.json())
+        .then(data =>{
+          console.log(data);
+          if(data.modifiedCount > 0){
+            const remaining = conformService.filter(odr => odr._id !== id);
+            const approving = conformService.filter(odr => odr._id === id);
+            approving.status = "Approving"
+
+            const newBooking = [approving,...remaining];
+            seTconformServices(newBooking);
+
+          }
+        })
+
+      }
 
 
     return (
         <div>
-            <h1>{conformService?.length}</h1>
             <div className="overflow-x-auto">
   <table className="table">
    
@@ -53,9 +84,11 @@ const ConfromService = () => {
     <tbody>
         {  
             conformService?.length>0 &&
-            conformService?.map(service=><ServiceRow
-            key={service._id}
-            service = {service}
+            conformService?.map(bookingService=><ServiceRow
+            key={bookingService._id}
+            bookingService = {bookingService}
+            handleDelete = {handleDelete}
+            handelApproved = {handelApproved}
             ></ServiceRow>)
         }
     </tbody>

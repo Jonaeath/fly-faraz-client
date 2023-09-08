@@ -1,8 +1,17 @@
 import { faPlane } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { authContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Navbar = () => {
+  const {user,logOut} = useContext(authContext);
+
+  const handelSignOut =() =>{
+    logOut()
+    .then(()=> {})
+    .catch(error => console.error(error))
+  }
 
   return (
     <div className="navbar bg-sky-600">
@@ -44,8 +53,16 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end mr-5">
-        <Link to='login' className="btn bg-sky-600 text-primary-content">Log In</Link>
-        <Link to='signup' className="btn bg-sky-600 text-primary-content" >Sign Up</Link>
+      {
+        user?.email ?
+        <>
+        <li onClick={handelSignOut} className='btn text-primary-content'><Link to="/serviceConform">SignOut</Link></li>
+        </>
+        :
+        <li className='btn text-primary-content'><Link to="/login">Login</Link></li>
+        
+      }
+      <li className='btn text-primary-content'><Link to="/signup">Sign Up</Link></li>
       </div>
     </div>
   );

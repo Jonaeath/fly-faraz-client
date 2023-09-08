@@ -31,6 +31,8 @@ const Booking = () => {
         else{
             alert('Phone number should ba 10 characters or longer');
         }
+        
+    //    Data send to Mongodb, Booking data or information
 
         fetch('http://localhost:4000/bookingData',{
             method:'POST',
@@ -54,7 +56,7 @@ const Booking = () => {
     return (
         <form onSubmit={handelFormCheckout}>
             <h1 className='text-3xl text-center font-bold text-orange-600'>You want to Order: {title}</h1>
-            <h2 className='text-2xl text-center font-bold text-blue-600'>Service Price: {price}</h2>
+            <h2 className='text-2xl text-center font-bold text-blue-600'>Service Price: ${price}</h2>
             <div className='grid md:grid-cols-1 lg:grid-cols-2 gap-5 m-2'>
                 <input type="text" name='name' placeholder="Name" className="input input-bordered input-primary w-full" required />
                 <input type="text" name='city' placeholder="city" className="input input-bordered input-primary w-full" required />
@@ -66,7 +68,7 @@ const Booking = () => {
             </div>
             <div className='flex justify-center items-center'>
             
-             <input className='btn btn-primary bg-sky-600 text-primary-content mb-2' type="submit" value="Place Your Order"/>
+             <input className='btn btn-primary bg-sky-600 text-primary-content mb-2' type="submit" value="Place For Booking"/>
 
             
             </div>
