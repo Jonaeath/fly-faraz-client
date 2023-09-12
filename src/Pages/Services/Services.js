@@ -1,17 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import DisplayService from './DisplayService';
+import './Service.css'
 
 const Services = () => {
     const [services,setService] = useState([]);
+    const [count,setCount] = useState(0)
+    const [page,setPages] = useState(0)
+    const [size,setSize] = useState(3)
+    
 
    useEffect (()=> {
-        fetch("http://localhost:4000/flyData")
+    const url = `http://localhost:4000/flyData?page=${page}&size=${size}`
+        fetch(url)
         .then(res=>res.json())
-        .then(data=>setService(data))
+          .then(data=>{
+            setCount(data.count);
+            setService(data.flyData);
+          })
 
-   },[])
+   },[page,size])
 
-   const sliceService = services.slice(0,3);
+   
+const pages = Math.ceil(count/size);
+
+//    const sliceService = services.slice(0,3);
 
     return (
         <div className='ml-9 pb-6 '>
@@ -21,13 +33,24 @@ const Services = () => {
             <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             
             {
-                sliceService.map(service=><DisplayService
+                services?.map(service=><DisplayService
                     service = {service}
                     key = {service._id} 
 
                     ></DisplayService>)
             }
 
+            </div>
+            <div className='pagination'>
+                {   
+                    [...Array(pages).keys()].map(number =><button
+                    key={number}
+                    className={page === number && 'selected'}
+                    onClick={()=>setPages(number)}
+                    >
+                     {number + 1}   
+                    </button>)
+                }
             </div>
         </div>
     );
