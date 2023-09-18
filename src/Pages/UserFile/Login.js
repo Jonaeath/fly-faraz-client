@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import imge from '../../Image/Biman-01.jpg';
 import { authContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
  
     const {login} = useContext(authContext)
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handellogin = event =>{
         event.preventDefault();
@@ -17,6 +21,7 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            navigate(from, {replace: true})
         })
         .catch(err => console.error(err))
     }

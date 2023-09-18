@@ -5,6 +5,7 @@ import Login from "../../Pages/UserFile/Login";
 import SignUp from "../../Pages/UserFile/SignUp";
 import Booking from "../../Pages/Booking/Booking";
 import ConfromService from "../../Pages/ConfromService/ConfromService";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -26,7 +27,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/booking/:id',
-                element:<Booking/>,
+                element:<PrivateRoute><Booking/></PrivateRoute>,
                 loader:({params}) => fetch(`http://localhost:4000/flyData/${params.id}`)
 
             },
