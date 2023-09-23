@@ -9,7 +9,11 @@ const ConfromService = () => {
     // Load booking data from Mongodb for make booking list
     useEffect(() => {
       if(user?.email){
-        fetch(`http://localhost:4000/bookingData?email=${user?.email}`)
+        fetch(`http://localhost:4000/bookingData?email=${user?.email}`,{
+          headers:{
+            authorization: `Bearer ${localStorage.getItem('new-token')}`
+          }
+        })
         .then(res => res.json())
         .then(data => seTconformServices(data))
         .catch(error => console.log(error))

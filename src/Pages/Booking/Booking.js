@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { authContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Booking = () => {
@@ -68,7 +68,9 @@ const Booking = () => {
             </div>
             <div className='flex justify-center items-center'>
             
+             <Link to="/serviceConform">
              <input className='btn btn-primary bg-sky-600 text-primary-content mb-2' type="submit" value="Place For Booking"/>
+             </Link>
 
             
             </div>

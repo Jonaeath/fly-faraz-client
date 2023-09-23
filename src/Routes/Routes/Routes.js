@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/serviceConform',
-                element:<ConfromService/>
+                element:<PrivateRoute><ConfromService/></PrivateRoute>
             }
         ]
     }
