@@ -6,6 +6,8 @@ import SignUp from "../../Pages/UserFile/SignUp";
 import Booking from "../../Pages/Booking/Booking";
 import ConfromService from "../../Pages/ConfromService/ConfromService";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Services from "../../Pages/Services/Services";
+import TicketAvailable from "../../Pages/TicketAvailable/TicketAvailable";
 
 export const router = createBrowserRouter([
     {
@@ -16,7 +18,14 @@ export const router = createBrowserRouter([
                 path:'/',
                 element:<Home/>
             },
-            
+            {
+                path:'/ticket',
+                element:<TicketAvailable/>
+            },
+            {
+                path:'/service',
+                element:<Services/>
+            },
             {
                 path:'/login',
                 element:<Login/>

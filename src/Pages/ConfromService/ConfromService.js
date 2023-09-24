@@ -79,10 +79,10 @@ const ConfromService = () => {
             <input type="checkbox" className="checkbox" />
           </label>
         </th>
-        <th className='font-bold text-xl text-primary-content'>Service Name & Price</th>
-        <th className='font-bold text-xl text-primary-content'>Customer Name</th>
-        <th className='font-bold text-xl text-primary-content'>Phone No</th>
-        <th className='font-bold text-xl text-primary-content'>Message</th>
+        <th className='font-bold text-xl'>Service Name & Price</th>
+        <th className='font-bold text-xl'>Customer Name</th>
+        <th className='font-bold text-xl'>Phone No</th>
+        <th className='font-bold text-xl'>Message</th>
       </tr>
     </thead>
     <tbody>

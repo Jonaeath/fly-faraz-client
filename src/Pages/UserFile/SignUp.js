@@ -1,21 +1,29 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import imge from '../../Image/Biman-03.jpg';
 import { authContext } from '../../Context/AuthProvider/AuthProvider';
 
 const SignUp = () => {
    const {createUser} = useContext(authContext);
+   const navigate = useNavigate()
+
     const handelSignup = event =>{
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password)
+        console.log(name,email,password)
 
         createUser(email,password)
         .then(result => {
             const user = result.user;
             console.log(user);
+            if(createUser){
+                alert('Your SignUp Complete Successfully')
+                form.reset()
+                navigate('/login')
+            }
         })
         .catch(err => console.error(err))
     }
@@ -46,7 +54,7 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="text" name='password' placeholder="password" className="input input-bordered" />
+                                <input type="password" name='password' placeholder="password" className="input input-bordered" />
                                 <label className="label">
                                     <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
                                 </label>

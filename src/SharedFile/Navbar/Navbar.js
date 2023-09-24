@@ -23,13 +23,7 @@ const Navbar = () => {
           <ul tabIndex={0} className="menu menu-sm dropdown-content font-bold mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
             <li><Link>Home</Link></li>
             <li><Link>About</Link></li>
-            <li>
-              <Link>Services</Link>
-              <ul className="p-2 bg-sky-300">
-                <li><Link>Booking</Link></li>
-                <li><Link>Submenu2</Link></li>
-              </ul>
-            </li>
+            <li><Link to="service">Our Services</Link></li>        
             <li><Link>Contact</Link></li>
           </ul>
         </div>
@@ -40,29 +34,21 @@ const Navbar = () => {
         <ul className="menu menu-horizontal font-bold text-primary-content px-1">
           <li><Link>Home</Link></li>
           <li><Link>About</Link></li>
-          <li tabIndex={0}>
-            <details>
-              <summary>Services</summary>
-              <ul className="p-2 bg-sky-300">
-                <li><Link>Booking</Link></li>
-                <li><Link>Submenu2</Link></li>
-              </ul>
-            </details>
-          </li>
+          <li><Link to="service">Our Services</Link></li>        
           <li><Link>Contact</Link></li>
         </ul>
       </div>
-      <div className="navbar-end mr-5">
+      <div className="navbar-end mr-5 gap-3">
       {
         user?.email ?
         <>
-        <li onClick={handelSignOut} className='btn text-primary-content'><Link to="/serviceConform">SignOut</Link></li>
+        <li onClick={handelSignOut} className='btn btn-primary'><Link to="/serviceConform">SignOut</Link></li>
         </>
         :
-        <li className='btn text-primary-content'><Link to="/login">Login</Link></li>
+        <li className='btn btn-primary'><Link to="/login">Login</Link></li>
         
       }
-      <li className='btn text-primary-content'><Link to="/signup">Sign Up</Link></li>
+      <li className='btn btn-primary'><Link to="/signup">Sign Up</Link></li>
       </div>
     </div>
   );

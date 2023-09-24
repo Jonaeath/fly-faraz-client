@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const ServiceRow = ({bookingService,handleDelete,handelApproved}) => {
-    const {_id,serviceName,price,customer,phone,message,service,status} = bookingService;
+    const {_id,serviceName,price,customer,phone,service,status} = bookingService;
     const [orderBookins,setOrderbooking]=useState({});
     const [isLoading, setIsLoading] = useState(false)
     
@@ -40,19 +40,19 @@ if(isLoading){
             </div>
           </div>
           <div>
-            <div className="font-bold text-primary-content">{serviceName}</div>
-            <div className="text-sm text-primary-content">Price:${price}</div>
+            <div className="font-bold">{serviceName}</div>
+            <div className="text-sm">Price:${price}</div>
           </div>
         </div>
       </td>
-      <td className="font-bold text-primary-content">
+      <td className="font-bold">
         {customer}
         <br/>
       </td>
-      <td className="font-bold text-primary-content">{phone}</td>
+      <td className="font-bold">{phone}</td>
 
       <th>
-        <button onClick={()=>handelApproved(_id)} className="btn btn-ghost btn-xs text-primary-content">{status? status : 'pending'}</button>
+        <button onClick={()=>handelApproved(_id)} className="btn btn-ghost btn-xs">{status? status : 'pending'}</button>
       </th>
     </tr>
     );
