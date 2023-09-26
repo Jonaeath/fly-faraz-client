@@ -8,6 +8,7 @@ import ConfromService from "../../Pages/ConfromService/ConfromService";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Services from "../../Pages/Services/Services";
 import TicketAvailable from "../../Pages/TicketAvailable/TicketAvailable";
+import Review from "../../Pages/Home/Home/Review/Review";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
             {
                 path:'/service',
                 element:<Services/>
+            },
+            {
+                path:'/review',
+                element:<Review/>
             },
             {
                 path:'/login',
