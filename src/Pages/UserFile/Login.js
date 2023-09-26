@@ -32,7 +32,7 @@ const Login = () => {
             console.log(currentUser);
 
         // get jwt token
-        fetch('http://localhost:4000/jwt',{
+        fetch('https://fly-faraz-server-1c0c1w9hj-jonaeath.vercel.app/jwt',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

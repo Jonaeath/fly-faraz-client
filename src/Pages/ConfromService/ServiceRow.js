@@ -8,7 +8,7 @@ const ServiceRow = ({bookingService,handleDelete,handelApproved}) => {
     useEffect(()=>{
       if(service){
         setIsLoading(true)
-        fetch(`http://localhost:4000/flyData/${service}`)
+        fetch(`https://fly-faraz-server-1c0c1w9hj-jonaeath.vercel.app/flyData/${service}`)
         .then(res=>res.json())
         .then(data=>setOrderbooking(data))
         .catch(error => console.log(error)).finally(()=> setIsLoading(false))

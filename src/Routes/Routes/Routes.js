@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
             {
                 path:'/booking/:id',
                 element:<PrivateRoute><Booking/></PrivateRoute>,
-                loader:({params}) => fetch(`http://localhost:4000/flyData/${params.id}`)
+                loader:({params}) => fetch(`https://fly-faraz-server-1c0c1w9hj-jonaeath.vercel.app/flyData/${params.id}`)
 
             },
             {

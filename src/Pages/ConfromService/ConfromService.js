@@ -9,7 +9,7 @@ const ConfromService = () => {
     // Load booking data from Mongodb for make booking list
     useEffect(() => {
       if(user?.email){
-        fetch(`http://localhost:4000/bookingData?email=${user?.email}`,{
+        fetch(`https://fly-faraz-server-1c0c1w9hj-jonaeath.vercel.app/bookingData?email=${user?.email}`,{
           headers:{
             authorization: `Bearer ${localStorage.getItem('new-token')}`
           }
@@ -27,7 +27,7 @@ const ConfromService = () => {
     const handleDelete = id =>{
         const proceed = window.confirm('Are you sure?..You want to cancel this Order')
         if(proceed){
-          fetch(`http://localhost:4000/bookingData/${id}`,{
+          fetch(`https://fly-faraz-server-1c0c1w9hj-jonaeath.vercel.app/bookingData/${id}`,{
             method:'DELETE'
           })
           .then(res =>res.json())
@@ -43,7 +43,7 @@ const ConfromService = () => {
       }
 
       const handelApproved = (id) =>{
-        fetch(`http://localhost:4000/bookingData/${id}`,{
+        fetch(`https://fly-faraz-server-1c0c1w9hj-jonaeath.vercel.app/bookingData/${id}`,{
             method:'PATCH',
             headers:{
               'content-type':'application/json'

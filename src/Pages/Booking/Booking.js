@@ -34,7 +34,7 @@ const Booking = () => {
         
     //    Data send to Mongodb, Booking data or information
 
-        fetch('http://localhost:4000/bookingData',{
+        fetch('https://fly-faraz-server-1c0c1w9hj-jonaeath.vercel.app/bookingData',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

@@ -10,7 +10,7 @@ const Services = () => {
     
 
    useEffect (()=> {
-    const url = `http://localhost:4000/flyData?page=${page}&size=${size}`
+    const url = `https://fly-faraz-server-1c0c1w9hj-jonaeath.vercel.app/flyData?page=${page}&size=${size}`
         fetch(url)
         .then(res=>res.json())
           .then(data=>{
