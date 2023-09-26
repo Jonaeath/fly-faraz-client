@@ -9,6 +9,7 @@
     "@gsebdev/react-simple-datepicker": "^1.0.21",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
+    "@react-icons/all-files": "^4.1.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

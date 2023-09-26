@@ -2,12 +2,17 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import imge from '../../Image/Biman-01.jpg';
 import { authContext } from '../../Context/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { FaGoogle } from 'react-icons/fa';
+
+
 
 const Login = () => {
  
-    const {login} = useContext(authContext)
+    const {login,googleSignIn} = useContext(authContext)
     const location = useLocation();
     const navigate = useNavigate();
+    const googleProvider = new GoogleAuthProvider()
 
     const from = location.state?.from?.pathname || '/';
 
@@ -47,6 +52,17 @@ const Login = () => {
         .catch(err => console.error(err))
     }
 
+    const handelGoogleSignIn = () =>{
+
+        googleSignIn(googleProvider)
+        .then(result =>{
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(err => console.error(err))
+    }
+
+
     return (
         <div>
             <div className="hero w-full ml-10 my-10">
@@ -77,8 +93,10 @@ const Login = () => {
                             </div>
                         </form>
                         <p className='text-center'>Start up for New <Link className='text-orange-600 font-bold' to='/signup'>Sign Up</Link></p>
+                        <button onClick={handelGoogleSignIn} className='btn btn-active ml-6 mr-6'>
+                        <FaGoogle></FaGoogle> Login With Google</button>
+                        
                     </div>
-                    
                 </div>
             </div>
         </div>

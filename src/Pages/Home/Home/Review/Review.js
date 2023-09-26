@@ -70,6 +70,10 @@ const Review = () => {
         <button className="random-btn" onClick={getRandomPerson}>
           Get Random Review
         </button>
+        <div className="flex justify-center p-3 gap-3">
+        <button className="random-btn">Edit</button>
+        <button className="random-btn">Delete</button>
+        </div>
       </article>
   
   );
